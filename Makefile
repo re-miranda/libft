@@ -16,15 +16,19 @@ RM = rm -rf
 
 all: $(NAME)
 
-$(NAME): $(GNL) $(PRINTF) $(LIBFT)
+$(NAME): $(LIBFT) $(GNL) $(PRINTF)
 
-$(GNL): $(LIBFT)
+$(GNL):
 	make all -C $(GNL_PATH)
-	$(AR) $(NAME) $(GNL)
+	cp $(GNL) $(NAME_PATH)
+	$(RM) $(NAME)
+	mv ./libftgnl.a $(NAME)
 
-$(PRINTF): $(LIBFT)
+$(PRINTF):
 	make all -C $(PRINTF_PATH)
-	$(AR) $(NAME) $(PRINTF)
+	cp $(PRINTF) $(NAME_PATH)
+	$(RM) $(NAME)
+	mv ./libftprintf.a $(NAME)
 
 $(LIBFT):
 	make all -C $(LIBFT_PATH)

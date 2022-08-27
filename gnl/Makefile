@@ -1,10 +1,11 @@
 # LIBS
 NAME = libftgnl.a
-LIBFT = ../libft/libft.a
+LIBFT = ../libft.a
 
 # LIBS PATH
 NAME_PATH = ./
-LIBFT_PATH = ../libft
+LIBFT_PATH = ../
+HEADER_PATH = ./
 
 # OTHERS
 CC = cc
@@ -16,27 +17,21 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = get_next_line.c \
 	get_next_line_utils.c
 OBJ = $(SRC:%.c=%.o)
-HEADER = ./
 
 all: $(NAME)
 
 %.o:	%.c
-	$(CC) $(CFLAGS) -c -I$(HEADER) $< -o $(<:%.c=%.o)
+	$(CC) $(CFLAGS) -c -I$(HEADER_PATH) $< -o $(<:%.c=%.o)
 
-$(NAME): $(LIBFT)
+$(NAME): $(OBJ)
 	cp $(LIBFT) $(NAME_PATH)
 	mv ./libft.a $(NAME)
 	$(AR) $(NAME) $(OBJ)
 
-$(LIBFT)
-	make all -C $(LIBFT_PATH)
-
 clean:
-	make clean -C $(LIBFT_PATH)
 	$(RM) $(OBJ)
 
 fclean: clean
-	make fclean -C $(LIBFT_PATH)
 	$(RM) $(NAME)
 
 re: fclean all

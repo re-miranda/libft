@@ -1,3 +1,18 @@
+# LIBS
+NAME = libftprintf.a
+LIBFT = ../libft.a
+
+# LIBS PATH
+LIBFT_PATH = ../
+HEADER_PATH = ./
+
+# OTHERS
+CC = cc
+AR = ar -rcs
+RM = rm -rf
+CFLAGS = -Wall -Wextra -Werror
+
+# FILES
 SRC = ft_printf.c \
 	_find_specification.c \
 	_flag_precision.c \
@@ -8,33 +23,21 @@ SRC = ft_printf.c \
 	ft_uint_str.c \
 	ft_sizet_base_str.c
 OBJ = $(SRC:%.c=%.o)
-HEADER = ./
-CC = cc
-AR = ar -rcs
-RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror
-NAME = libftprintf.a
-LIBFT = ../libft/libft.a
 
 all: $(NAME)
 
 %.o:	%.c
-	$(CC) $(CFLAGS) -c -I$(HEADER) $< -o $(<:%.c=%.o)
+	$(CC) $(CFLAGS) -c -I$(HEADER_PATH) $< -o $(<:%.c=%.o)
 
 $(NAME): $(OBJ) $(LIBFT)
 	cp $(LIBFT) ./
 	mv ./libft.a $(NAME)
 	$(AR) $(NAME) $(OBJ)
 
-$(LIBFT):
-	make all -C ./libft
-
 clean:
-	make clean -C ./libft
 	$(RM) $(OBJ)
 
 fclean: clean
-	make fclean -C ./libft
 	$(RM) $(NAME)
 
 re: fclean all

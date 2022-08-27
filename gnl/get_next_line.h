@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
+# define BUFFER_SIZE 10
+
 typedef struct s_list
 {
 	int				fd;
