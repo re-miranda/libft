@@ -367,3 +367,15 @@ fd:  The file descriptor on which to write.
 None
 ### ERRORS
 No errors are defined.
+
+## `ft_abs`
+_`int	ft_abs(int n)`_
+### DESCRIPTION
+Outputs the absolute integer to the given interger ’n’.  
+n:  The integer to output.
+### RETURN VALUE
+An int with the absolute value of ’n’.
+### ERRORS
+When the input execceds max_int (the highest positive value of a 4 bytes int (2147483647)),
+ the function will truncate the output, which shall be limited to max_int.
+  Console warnings are thrown on each function call, in case truncation happens.
