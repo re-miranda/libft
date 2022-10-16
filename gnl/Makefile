@@ -15,7 +15,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 # FILES
 SRC = get_next_line.c \
-	get_next_line_utils.c
+	get_next_line_utils.c \
+	get_whole_file.c
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
